@@ -8,8 +8,10 @@ const loggerMiddleware = require('./middleware/logger');
 const apiKeyMiddleware = require('./middleware/apiKey');
 
 // Import 2 rute baru kita yang sudah di-split
+
 const shipmentRoutes = require('./routes/shipmentRoutes');
 const trackRoutes = require('./routes/trackRoutes');
+
 
 app.use(express.json());
 app.use(loggerMiddleware);
@@ -44,6 +46,9 @@ app.get('/', (req, res) => {
 });
 
 // Registrasi endpoint ber-middleware API Key
+
+
+app.use('/api/docs', docsRoutes);
 app.use('/api/docs', docsRoutes);
 app.use('/api/shipments', apiKeyMiddleware, shipmentRoutes); 
 app.use('/api/tracks', apiKeyMiddleware, trackRoutes);       
