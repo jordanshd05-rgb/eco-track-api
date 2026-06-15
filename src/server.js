@@ -1,4 +1,5 @@
 // src/server.js
+const docsRoutes = require('./routes/docsRoutes');
 const express = require('express');
 const app = express();
 const port = 3001; // Pastikan port sesuai yang kamu pakai
@@ -43,6 +44,7 @@ app.get('/', (req, res) => {
 });
 
 // Registrasi endpoint ber-middleware API Key
+app.use('/api/docs', docsRoutes);
 app.use('/api/shipments', apiKeyMiddleware, shipmentRoutes); 
 app.use('/api/tracks', apiKeyMiddleware, trackRoutes);       
 
